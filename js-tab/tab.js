@@ -5,6 +5,7 @@
     const $tab = $doc.getElementById('js-tab');
     const $nav = $tab.querySelectorAll('[data-nav]');
     const $content = $tab.querySelectorAll('[data-content]');
+    const IS_ACTIVE = 'is-active';
 
     // 初期化（読み込んだ時に最初にしたいこと）
     const init = () => {
@@ -24,12 +25,12 @@
         // 不要なnav、contentを全て一旦リセットする
         for (let i = 0; i < $nav.length; i++) {
             $content[i].style.display = 'none';
-            $nav[i].classList.remove('is-active');
+            $nav[i].classList.remove(IS_ACTIVE);
         }
         
         // 対象のコンテンツをアクティブ化（動的にコンテンツを取得する）
         $tab.querySelectorAll('[data-content="' + targetVal + '"]')[0].style.display = 'block';
-        $nav[targetVal].classList.add('is-active');
+        $nav[targetVal].classList.add(IS_ACTIVE);
     };
     
     // 全nav要素に対して関数を適応・発火
